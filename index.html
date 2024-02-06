@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Generator</title>
+  <style>
+    body {
+      text-align: center;
+      margin: 50px;
+    }
+
+    #phoneInput {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    #generateButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #otpDisplay {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>OTP Generator</h1>
+  <label for="phoneInput">Enter Phone Number:</label>
+  <input type="tel" id="phoneInput" placeholder="Enter your phone number">
+  <button id="generateButton" onclick="generateAndSendOTP()">Generate and Send OTP</button>
+  <div id="otpDisplay"></div>
+
+  <script>
+    function generateAndSendOTP() {
+      const phoneInput = document.getElementById('phoneInput');
+      const otpDisplay = document.getElementById('otpDisplay');
+
+      // Validate phone number (you may need more robust validation)
+      const phoneNumber = phoneInput.value.trim();
+      if (!phoneNumber) {
+        alert('Please enter a valid phone number');
+        return;
+      }
+
+      // Generate a random 6-digit OTP
+      const otp = Math.floor(100000 + Math.random() * 900000);
+
+      // Simulate sending the OTP to the phone number (in a real-world scenario, this would be done server-side)
+      simulateOTPSend(phoneNumber, otp);
+
+      // Display the OTP
+      otpDisplay.textContent = `OTP sent to ${phoneNumber}: ${otp}`;
+    }
+
+    function simulateOTPSend(phoneNumber, otp) {
+      // In a real-world scenario, this function would make a server request to send the OTP via SMS
+      // For security reasons, OTP generation and sending should be handled server-side
+      console.log(`Sending OTP ${otp} to ${phoneNumber}`);
+      // Here, you would typically make an AJAX or fetch request to your server to send the OTP
+    }
+  </script>
+</body>
+</html>
